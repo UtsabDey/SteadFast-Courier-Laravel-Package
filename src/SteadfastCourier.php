@@ -18,6 +18,15 @@ class SteadfastCourier
         $this->secretKey = config('steadfast-courier.secret_key');
     }
 
+    public function withConfig(string $apiKey, string $secretKey, ?string $baseUrl = null): self
+    {
+        $this->apiKey = $apiKey;
+        $this->secretKey = $secretKey;
+        $this->baseUrl = $baseUrl ?? $this->baseUrl;
+
+        return $this;
+    }
+
     public function placeOrder($data)
     {
         $response = Http::withHeaders([

@@ -307,6 +307,22 @@ private function processPayload($payload)
 }
 ```
 
+### 6. Using Custom Config
+
+If you don’t want to rely on .env or you’re building a SaaS application with multiple Steadfast Courier integrations, you can provide custom configuration using the withConfig method:
+
+```php
+use SteadFast\SteadFastCourierLaravelPackage\Facades\SteadfastCourier;
+
+// Set custom API credentials and optional base URL
+$response = SteadfastCourier::withConfig(
+    'your_api_key',          // API Key
+    'your_secret_key',       // API Secret
+    'optional_base_url'      // Optional: custom base URL
+)->getCurrentBalance();
+
+```
+
 ## 📞 Support
 For any issues or questions related to this package, please open an issue on GitHub.
 
